@@ -1,0 +1,24 @@
+{% extends 'default.html' %}
+
+{% block title %}Room{% endblock %}
+
+{% block content %}
+    <h1>{{ room.name }}</h1>
+    <p>Members:</p>
+    <ul>
+        {% for member in room.members.all %}
+            <li>{{ member.username }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Messages:</h2>
+    <div id="log">
+        {% for message in room.messages.all %}
+            <p><strong>{{ message.user.username }}:</strong> {{ message.content }} <em>({{ message.created_at }})</em></p>
+        {% endfor %}
+    </div>
+    <form id="form" method="post" action="{% url 'message-list' room.id %}">
+        {% csrf_token %}
+        <input type="text" id="msg" name="content" size="64" autofocus />
+        <input type="submit" value="Send" />
+    </form>
+{% endblock %}

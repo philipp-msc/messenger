@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Messenger</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'profile' %}">My Profile</a></li>
+                <li><a href="{% url 'users' %}">Users</a></li>
+                <li><a href="{% url 'rooms' %}">Rooms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>{{ room.name|default:"Welcome to Messenger" }}</h1>
+        <p>Select an option from the menu to begin.</p>
+
+        <div id="log">
+
+        </div>
+
+        <form id="form">
+            <input type="text" id="msg" size="64" autofocus placeholder="Enter your message" />
+            <input type="submit" value="Send" />
+            <input type="button" value="Send geo" id="send_geo" />
+        </form>
+    </main>
+
+
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
