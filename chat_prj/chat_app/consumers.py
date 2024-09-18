@@ -7,7 +7,7 @@ from chat_app.models import *
 class ChatConsumer(AsyncJsonWebsocketConsumer):
 
     async def connect(self):
-        self.room_name = f'room_{self.scope['url_route']['kwargs']['room_name']}'
+        self.room_name = f"room_{self.scope['url_route']['kwargs']['room_name']}"
         await self.channel_layer.group_add(self.room_name, self.channel_name)
         await self.accept()
 
